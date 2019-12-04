@@ -1,0 +1,26 @@
+{% extends "bootstrap/base.html" %}
+{# <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}"> #}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block styles %}
+{{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+{% block content %}
+	<h1 align="center">ASSIGNMENT 3</h1>.
+	<h3 align="center">
+        Enter your roll number and chose the files you want to download
+	</h3>
+	<div class = "container">
+		<form action="" method="POST">
+				{{ form.csrf_token }}
+				{{ wtf.form_field(form.rollno, class="form-control", placeholder="Enter the roll number ", maxlength=9, size=20) }}
+                {{ wtf.form_field(form.submit1, size=20) }}<br><br>
+				{{ wtf.form_field(form.submit2, size=20) }}<br><br>
+				{{ wtf.form_field(form.submit3, size=20) }}<br><br>
+		</form>
+	</div>
+
+<div class='container'>
+    <a href="/"> Various Distribution Plots </a>
+</div>
+{% endblock %}

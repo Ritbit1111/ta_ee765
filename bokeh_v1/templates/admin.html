@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+{# <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}"> #}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block styles %}
+{{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+{% block content %}
+	<h1 align="center">Admin Page</h1>.
+	<h3 align="center">
+	Weilbull Failure times with shape and scale parameter as input	
+	</h3>
+	<div class = "container">
+		<form action="" method="POST">
+			<dl>
+				{{ form.csrf_token }}
+				{{ wtf.form_field(form.rollno, class="form-control", placeholder="Enter the roll number ", maxlength=9, size=20) }}
+				{{ wtf.form_field(form.points, placeholder ="Enter a number between 10 to 100000 ",  size=20) }}
+				{{ wtf.form_field(form.scale, placeholder ="Enter scale parameter ",  size=20) }}
+				{{ wtf.form_field(form.shape, placeholder ="Enter shape parameter ",  size=20) }}
+				{{ wtf.form_field(form.seed, placeholder ="Enter seed", size=20) }}
+				{{ wtf.form_field(form.noise_level, placeholder ="Enter std dev of noise (1-5)",  size=20) }}
+				{{ wtf.form_field(form.submit) }}
+			</dl>
+		</form>
+        <a href="assn2"> Assignment 2</a><br>
+    <a href="/"> Various Distribution Plots </a>
+	</div>
+    
+{% endblock %}

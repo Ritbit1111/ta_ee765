@@ -1,0 +1,27 @@
+{% extends "bootstrap/base.html" %}
+{# <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/mainpage.css') }}"> #}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block styles %}
+{{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='mystyle.css')}}">
+{% endblock %}
+{% block content %}
+	<h1 align="center">PROJECT</h1>.
+	<div class = "container">
+		<form action="" method="POST">
+				{{ form.csrf_token }}
+				{{ wtf.form_field(form.group, class="form-control", placeholder="Enter your group number ", maxlength=2, size=100) }}
+				{{ wtf.form_field(form.requirement, class="form-control", placeholder="(N1,D1,T1,STR1);(N2,D2,T2,STR2)...(Ni,Di,Ti,STRi)", maxlength=1000, size=500) }}
+				{{ wtf.form_field(form.submit) }}
+		</form>
+	</div>
+    <hr>
+<div class='container'>
+    <h4>Now sample size <= 500 and duration <= 1000 is also allowed for you to optimize the plan even more.</h2> 
+    <h4>But ensure that maximum cdf in any of your tests doesn't go below 80% as it is the best practice.</h2> 
+</div>
+<!-- <div class='container'>
+    <a href="/"> Various Distribution Plots </a>
+</div>
+-->
+{% endblock %}
